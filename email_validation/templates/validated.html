@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>Email List</title>
+</head>
+<body>
+  <h1>Email List!</h1>
+  <p>Success!</p>
+  {% for friend in all_emails: %}
+     <p>email: {{ friend['email'] }}</p>
+     <p>Create Since: {{ friend['created_at'] }}</p>
+     <form class="" action="/delete" method="post">
+       <input type="submit" name="" value="delete email">
+       <input type="hidden" name="delete" value="{{ friend['id'] }}">
+     </form>
+  {% endfor %}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Info</title>
+    <link rel="stylesheet" href="../static/message.css">
+  </head>
+  <body>
+    <div class="header">
+      <h1>Coding Dojo Wall</h1>
+      <p class="welcome">Welcome {{session["first_name"]}}</p>
+      <form class="logout" action="/logout" method="post">
+        <input type="submit" name="logout" value="logout">
+      </form>
+    </div>
+
+    <h2>Post a message</h3>
+    <div class="post_a_message">
+      <form class="" action="/messages" method="post">
+        <textarea name="message" rows="8" cols="80"></textarea>
+        <input type="submit" name="message" value="Post a Message">
+      </form>
+    </div>
+
+    <div class="message_comment_block">
+      {% for messages in all_messages: %}
+      <h4>{{messages["first_name"]}} {{messages["last_name"]}}  - {{messages["created_at"]}}</h4>
+        <p>{{messages["message"]}}</p>
+            {% if session["uid"] == messages["message_users_id"] %}
+                <a href="/delete/{{messages["messages_id"]}}">Delete Message</a>
+            {% endif %}
+
+            <div class="posted_message">
+              {%for posts in all_posts: %}
+                {% if posts["message_id"] == messages["messages_id"]: %}
+                    <h4>{{posts["first_name"]}} {{posts["last_name"]}} - {{posts["created_at"]}}</h4>
+                    <p>{{posts["comments"]}}</p>
+                {% endif %}
+              {% endfor %}
+            </div>
+              <form class="" action="/comments" method="post">
+                <textarea name="commenttxt" rows="8" cols="80"></textarea>
+                <input type="submit" name="submit" value="Post a Comment">
+                <input type="hidden" name="comment" value="{{messages['messages_id']}}">
+              </form>
+      {% endfor %}
+    </div>
+  </body>
+</html>

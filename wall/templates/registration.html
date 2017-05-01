@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registration Form</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h1>Register</h1>
+    <form class="" action="/register" method="post">
+      First Name<input type="text" name="first_name" value="{{session["first_name"]}}"> <br>
+      Last Name <input type="text" name="last_name" value="{{session["last_name"]}}"> <br>
+      Email <input type="text" name="email_name" value=""> <br>
+      Password <input type="password" name="password" value=""> <br>
+      Confirm Password <input type="password" name="confirm_password" value=""> <br>
+      <input type="submit" name="action" value="Submit">
+    </form>
+
+  <h1>Login</h1>
+  <form class="" action="/login" method="post">
+    Email <input type="text" name="email_name" value=""> <br>
+    Password <input type="password" name="password" value=""> <br>
+    <input type="submit" name="action" value="Submit">
+  </form>
+  </body>
+</html>

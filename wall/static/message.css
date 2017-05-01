@@ -1,0 +1,13 @@
+*{
+  padding:0px;
+  margin:0px;
+}
+.header{
+  display: inline-block;
+}
+.welcome{
+  display: inline-block
+}
+.logout{
+  display:inline-block
+}

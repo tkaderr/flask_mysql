@@ -1,0 +1,3 @@
+welcome: Welcome to mad lib game. Ready?
+
+name: You said {{ name }}. {{ message }}
